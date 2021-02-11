@@ -57,7 +57,7 @@ module SidekiqAlive
   def self.store_alive_key
     redis.set(current_lifeness_key,
               Time.now.to_i,
-              { ex: config.time_to_live.to_i })
+              ex: config.time_to_live.to_i)
   end
 
   def self.redis
@@ -120,7 +120,7 @@ module SidekiqAlive
   def self.register_instance(instance_name)
     redis.set(instance_name,
               Time.now.to_i,
-              { ex: config.time_to_live.to_i + 60 })
+              ex: config.time_to_live.to_i + 60)
   end
 end
 
